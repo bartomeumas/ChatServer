@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Y+gXeVlLfmZtq7iGzN8hGEZQkXhZY8j5RRpK4iiwA8cBZy1aM3f2jjeAKGF8/6lnGMdTzU9dAPrL2yUW6SdksQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cesar\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\cesar\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\cesar\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\cesar\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
