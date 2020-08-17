@@ -22,10 +22,6 @@ namespace ChatServer
             server.Start();
             Console.WriteLine("Listening on port 8080...");
 
-            //TcpClient client = server.AcceptTcpClient();
-
-            //StreamWriter writer = new StreamWriter(stream, Encoding.ASCII) { AutoFlush = true };
-            //StreamReader reader = new StreamReader(stream, Encoding.ASCII);
 
             while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape))
             {

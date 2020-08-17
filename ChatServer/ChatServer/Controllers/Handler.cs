@@ -15,9 +15,9 @@ namespace ChatServer.Controllers
 
         public void startClient(TcpClient inClientSocket, string clineNo, Hashtable cList)
         {
-            this.clientSocket = inClientSocket;
-            this.clNo = clineNo;
-            this.clientsList = cList;
+            clientSocket = inClientSocket;
+            clNo = clineNo;
+            clientsList = cList;
             Thread ctThread = new Thread(doChat);
             ctThread.Start();
         }
@@ -44,7 +44,7 @@ namespace ChatServer.Controllers
                     Console.WriteLine("From client - " + clNo + " : " + dataFromClient);
                     rCount = Convert.ToString(requestCount);
 
-                    Program.broadcast(dataFromClient, clNo, true);
+                    //Program.broadcast(dataFromClient, clNo, true);
                 }
                 catch (Exception ex)
                 {
@@ -52,7 +52,7 @@ namespace ChatServer.Controllers
                 }
             }//end while
         }//end doChat
-    } //end class handleClinet
+    } 
 
     //class Handler
     //{
