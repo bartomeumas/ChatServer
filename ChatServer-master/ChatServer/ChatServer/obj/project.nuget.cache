@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "PSO9fEodbMEAbQSeuzkb02/jhFp5kE+DptBeykG1X4Kfhn/O4p7schvEDe45qvJnz3H20b0f32EsiulcfR+ROw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\barto\\source\\repos\\ChatServer-master\\ChatServer\\ChatServer\\ChatServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\barto\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\barto\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\barto\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\barto\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
