@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y+gXeVlLfmZtq7iGzN8hGEZQkXhZY8j5RRpK4iiwA8cBZy1aM3f2jjeAKGF8/6lnGMdTzU9dAPrL2yUW6SdksQ==",
+  "dgSpecHash": "pJxHe6C1LkHEJnKXG5/XcwwShSO3jbs276Hqr9GmHwcoO0q43cBXsGjwG0vtrryJRSApMeVhb++2xXBiErNhxw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer.csproj",
+  "projectFilePath": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer\\ChatServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cesar\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
     "C:\\Users\\cesar\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",

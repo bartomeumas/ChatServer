@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer.csproj": {}
+    "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer\\ChatServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer.csproj": {
+    "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer\\ChatServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer.csproj",
+        "projectUniqueName": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer\\ChatServer.csproj",
         "projectName": "ChatServer",
-        "projectPath": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer.csproj",
+        "projectPath": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer\\ChatServer.csproj",
         "packagesPath": "C:\\Users\\cesar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\obj\\",
+        "outputPath": "C:\\Users\\cesar\\Documents\\INTEC\\9no Trimestre\\Desarrollo web\\CP\\ChatServer\\ChatServer\\ChatServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
