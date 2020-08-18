@@ -5,6 +5,8 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using ChatServer.Controllers;
+using ChatServer.SerDes;
+using ChatServer.Models;
 
 namespace ChatServer
 {
@@ -34,7 +36,8 @@ namespace ChatServer
                 stream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
                 dataFromClient = Encoding.ASCII.GetString(bytesFrom);
                 dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
-
+                Request request = Deserializer.Reciever(dataFromClient);
+                
                 // Here we need to add a method that assures that the user is connecting or already connected
                 //
                 clientsList.Add(dataFromClient, clientSocket);

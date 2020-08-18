@@ -6,19 +6,34 @@ using System.Text;
 
 namespace ChatServer.SerDes
 {
-    class Serializer
+    static class Serializer
     {
         // code\nreqID
         // code\nreqID\nListOfUsers
         // DELIVER\nreqID\nSource|msg
-
+        // code/nreqId/nusername
 
         public static string ResponseMaker(Response response) //Average Response
         {
+            if (response.Code != null && response.ReqID != null && response.Users != null)
+            {
+                return $"{response.Code}\n{response.ReqID}\n{response.Users}";
+            }
 
+            else if (response.Code != null && response.ReqID != null && response.UserName != null)
+            {
+                return $"{response.Code}\n{response.ReqID}\n{response.UserName}";
+            }
 
+            else if (response.Code != null && response.ReqID != null)
+            {
+                return $"{response.Code}\n{response.ReqID}";
+            }
 
-            return "";
+            else 
+            {
+                return $"{response.Verb}\n{response.ReqID}\n{response.UserName}|{response.Msg}";
+            }
 
         }
 

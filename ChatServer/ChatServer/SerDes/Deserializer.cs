@@ -38,7 +38,7 @@ namespace ChatServer.SerDes
             return new Request("INVALID", "0000"); //Invalid Verb
         }
 
-        public static Request ConnectDeserializer(string[] sections)
+        private static Request ConnectDeserializer(string[] sections)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace ChatServer.SerDes
 
         }
 
-        public static Request ListDeserializer(string[] sections)
+        private static Request ListDeserializer(string[] sections)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace ChatServer.SerDes
 
         }
 
-        public static Request SendDeserializer(string[] section)
+        private static Request SendDeserializer(string[] section)
         {
             try
             {
@@ -110,7 +110,7 @@ namespace ChatServer.SerDes
             }
         }
 
-        public static Request DisconnectDeserializer(string[] sections)
+        private static Request DisconnectDeserializer(string[] sections)
         {
             try
             {
