@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace ChatServer.Controllers
 {
-    public class Handler
+    public class Handler // This class is in charge of creating a thread for each client
     {
         TcpClient clientSocket;
         string clNo;

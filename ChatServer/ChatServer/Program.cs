@@ -25,10 +25,6 @@ namespace ChatServer
 
             while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape))
             {
-                //if (Console.ReadKey(true).Key == ConsoleKey.Escape)
-                //{
-                //    break;
-                //}
                 clientSocket = server.AcceptTcpClient();
                 byte[] bytesFrom = new byte[10025];
                 string dataFromClient = null;
@@ -39,6 +35,8 @@ namespace ChatServer
                 dataFromClient = Encoding.ASCII.GetString(bytesFrom);
                 dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
 
+                // Here we need to add a method that assures that the user is connecting or already connected
+                //
                 clientsList.Add(dataFromClient, clientSocket);
 
                 //broadcast(dataFromClient + " Joined ", dataFromClient, false);
