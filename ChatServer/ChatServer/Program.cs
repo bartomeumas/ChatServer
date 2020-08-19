@@ -35,7 +35,7 @@ namespace ChatServer
                 
                 stream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
                 dataFromClient = Encoding.ASCII.GetString(bytesFrom);
-                dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
+                //dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
                 
                 Request request = Deserializer.Reciever(dataFromClient);
                 if (request.Verb != "CONNECT") // Asssures that the first step of a client is to Connect

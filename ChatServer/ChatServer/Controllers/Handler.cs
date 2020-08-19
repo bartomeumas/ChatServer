@@ -46,7 +46,7 @@ namespace ChatServer.Controllers
                     NetworkStream networkStream = ClientSocket.GetStream();
                     networkStream.Read(bytesFrom, 0, (int)ClientSocket.ReceiveBufferSize);
                     dataFromClient = Encoding.ASCII.GetString(bytesFrom);
-                    dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
+                    //dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
                     Console.WriteLine("From client - " + Username + " : " + dataFromClient);
                     rCount = Convert.ToString(requestCount);
 
