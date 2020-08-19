@@ -10,7 +10,7 @@ namespace ChatServer.SerDes
     static class Deserializer
     {
         // Ejemplo:
-        // SEND\n0000|Multicast\nMark,Cesar,Andres|"Este es el mensaje"
+        // SEND\n0000|Multicast\nMark,Cesar,Andres|Este es el mensaje
         public static Request Reciever(string req)
         {
             //Request request;
@@ -20,22 +20,18 @@ namespace ChatServer.SerDes
             {
                 case "CONNECT":
                     return ConnectDeserializer(sections);
-                    break;
 
                 case "SEND":
                     return SendDeserializer(sections);
-                    break;
 
                 case "LIST":
                     return ListDeserializer(sections);
-                    break;
 
                 case "DISCONNECT":
                     return DisconnectDeserializer(sections);
-                    break;
 
             }
-            return new Request("INVALID", "0000"); //Invalid Verb
+            return new Request("INVALID", sections[1].Split('|')[0]); //Invalid Verb
         }
 
         private static Request ConnectDeserializer(string[] sections)
@@ -50,7 +46,7 @@ namespace ChatServer.SerDes
             }
             catch (Exception)
             {
-                return new Request("INVALID", "0000");
+                return new Request("INVALID", sections[1].Split('|')[0]);
             }
 
         }
@@ -66,17 +62,17 @@ namespace ChatServer.SerDes
             }
             catch (Exception)
             {
-                return new Request("INVALID", "0000");
+                return new Request("INVALID", sections[1].Split('|')[0]);
             }
 
         }
 
-        private static Request SendDeserializer(string[] section)
+        private static Request SendDeserializer(string[] sections)
         {
             try
             {
-                string[] header = section[1].Split('|');
-                string body = section[2];
+                string[] header = sections[1].Split('|');
+                string body = sections[2];
 
                 string reqID = header[0];
                 string typeOfCast = header[1].ToUpper();
@@ -87,26 +83,23 @@ namespace ChatServer.SerDes
                         string[] bodyElementsUNI = body.Split('|');
                         string user = bodyElementsUNI[0];
                         string msgUNI = bodyElementsUNI[1];
-                        return new Request(section[0], reqID, typeOfCast, user, msgUNI);
-                        break;
+                        return new Request(sections[0], reqID, typeOfCast, user, msgUNI);
 
                     case "MULTICAST":
                         string[] bodyElementsMULTI = body.Split('|');
                         string users = bodyElementsMULTI[0];
                         string msgMULTI = bodyElementsMULTI[1];
-                        return new Request(section[0], reqID, typeOfCast, users, msgMULTI);
-                        break;
+                        return new Request(sections[0], reqID, typeOfCast, users, msgMULTI);
 
                     case "BROADCAST":
-                        return new Request(section[0],reqID, typeOfCast, body);
-                        break;
+                        return new Request(sections[0],reqID, typeOfCast, body);
                 }
-                return new Request("INVALID", "0000"); //Invalid type
+                return new Request("INVALID", sections[1].Split('|')[0]); //Invalid type
 
             }
             catch (Exception)
             {
-                return new Request("INVALID", "0000");
+                return new Request("INVALID", sections[1].Split('|')[0]);
             }
         }
 
@@ -121,11 +114,9 @@ namespace ChatServer.SerDes
             }
             catch (Exception)
             {
-                return new Request("INVALID", "0000");
+                return new Request("INVALID", sections[1].Split('|')[0]);
             }
 
         }
     }
-
-
 }

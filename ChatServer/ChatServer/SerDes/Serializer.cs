@@ -11,13 +11,13 @@ namespace ChatServer.SerDes
         // code\nreqID
         // code\nreqID\nListOfUsers
         // DELIVER\nreqID\nSource|msg
-        // code/nreqId/nusername
+        // code\nreqId\nUsername
 
         public static string ResponseMaker(Response response) //Average Response
         {
             if (response.Code != null && response.ReqID != null && response.Users != null)
             {
-                return $"{response.Code}\n{response.ReqID}\n{response.Users}";
+                return $"{response.Code}\n{response.ReqID}\n{string.Join(',',response.Users)}";
             }
 
             else if (response.Code != null && response.ReqID != null && response.UserName != null)
@@ -34,27 +34,6 @@ namespace ChatServer.SerDes
             {
                 return $"{response.Verb}\n{response.ReqID}\n{response.UserName}|{response.Msg}";
             }
-
         }
-
-
-        //public static string ResponseMaker(string code, string reqID) //Average Response
-        //{
-
-
-        //    return "";
-
-        //}
-        //public static string ResponseMaker(string code, string reqID, List<string>users) //Respose for list of users
-        //{
-        //    return "";
-        //}
-
-        //public static string ResponseDeliver(string reqID, string sourceUser, string msg)
-        //{
-        //    return "";
-        //}
-
-
     }
 }

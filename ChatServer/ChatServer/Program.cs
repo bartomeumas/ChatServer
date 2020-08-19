@@ -37,16 +37,22 @@ namespace ChatServer
                 dataFromClient = Encoding.ASCII.GetString(bytesFrom);
                 dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
                 Request request = Deserializer.Reciever(dataFromClient);
+
+                if (request.Verb != "CONNECT")
+                {
+
+                    continue;
+                }
                 
                 // Here we need to add a method that assures that the user is connecting or already connected
                 //
-                clientsList.Add(dataFromClient, clientSocket);
+                clientsList.Add(request.UserName, clientSocket);
 
                 //broadcast(dataFromClient + " Joined ", dataFromClient, false);
 
-                Console.WriteLine(dataFromClient + " Joined chat room");
+                Console.WriteLine(request.UserName + " Joined chat room");
                 Handler client = new Handler();
-                client.startClient(clientSocket, dataFromClient, clientsList);
+                client.startClient(clientSocket, dataFromClient, clientsList, request.ReqID);
             }
 
             clientSocket.Close();
