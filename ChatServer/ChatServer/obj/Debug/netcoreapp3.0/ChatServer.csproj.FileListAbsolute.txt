@@ -28,3 +28,10 @@ C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatSe
 C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\obj\Debug\netcoreapp3.0\ChatServer.AssemblyInfo.cs
 C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\obj\Debug\netcoreapp3.0\ChatServer.dll
 C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\obj\Debug\netcoreapp3.0\ChatServer.pdb
+C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\bin\Debug\netcoreapp3.0\ChatServer.exe
+C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\bin\Debug\netcoreapp3.0\ChatServer.deps.json
+C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\bin\Debug\netcoreapp3.0\ChatServer.runtimeconfig.json
+C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\bin\Debug\netcoreapp3.0\ChatServer.runtimeconfig.dev.json
+C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\bin\Debug\netcoreapp3.0\ChatServer.dll
+C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\bin\Debug\netcoreapp3.0\ChatServer.pdb
+C:\Users\cesar\Documents\INTEC\9no Trimestre\Desarrollo web\CP\ChatServer\ChatServer\ChatServer\obj\Debug\netcoreapp3.0\ChatServer.genruntimeconfig.cache

@@ -25,7 +25,7 @@ namespace ChatServer
             Console.WriteLine("Listening on port 8080...");
 
 
-            while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape))
+            while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape)) // Esc key stops the server
             {
                 clientSocket = server.AcceptTcpClient();
                 byte[] bytesFrom = new byte[10025];
@@ -36,16 +36,19 @@ namespace ChatServer
                 stream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
                 dataFromClient = Encoding.ASCII.GetString(bytesFrom);
                 dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
+                
                 Request request = Deserializer.Reciever(dataFromClient);
-
-                if (request.Verb != "CONNECT")
+                if (request.Verb != "CONNECT") // Asssures that the first step of a client is to Connect
                 {
-
+                    Delivery.SendResponse(new Response("200", request.ReqID), clientSocket);
                     continue;
                 }
-                
-                // Here we need to add a method that assures that the user is connecting or already connected
-                //
+                else if (clientsList.ContainsKey(request.UserName)) // Assures that the username is not used
+                {
+                    Delivery.SendResponse(new Response("204", request.ReqID), clientSocket);
+                    continue;
+                }
+
                 clientsList.Add(request.UserName, clientSocket);
 
                 //broadcast(dataFromClient + " Joined ", dataFromClient, false);

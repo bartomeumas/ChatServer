@@ -1,23 +1,38 @@
-﻿using System;
+﻿using ChatServer.Models;
+using ChatServer.SerDes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
 namespace ChatServer.Controllers
 {
-    class Delivery
+    static class Delivery
     {
         /* This class will be in charge of delivering all the
-         messages the user wants to send */
+         messages the client or server wants to send */
+
+        public static void SendResponse(Response response, TcpClient destinatary)
+        {
+            TcpClient clientSocket;
+            clientSocket = (TcpClient)destinatary;
+            NetworkStream unicastStream = clientSocket.GetStream();
+            Byte[] responsecastBytes = Encoding.ASCII.GetBytes(Serializer.ResponseMaker(response));
+
+            unicastStream.Write(responsecastBytes, 0, responsecastBytes.Length);
+            unicastStream.Flush();
+        }
+
         public static void UniCast(string msg, string sender, TcpClient destinatary)
         {
             TcpClient unicastSocket;
             unicastSocket = (TcpClient)destinatary;
             NetworkStream unicastStream = unicastSocket.GetStream();
-            Byte[] broadcastBytes = Encoding.ASCII.GetBytes(sender + msg); //Here we will pass the args and call Serializer
+            Byte[] unicastBytes = Encoding.ASCII.GetBytes(sender + msg); //Here we will pass the args and call Serializer
 
-            unicastStream.Write(broadcastBytes, 0, broadcastBytes.Length);
+            unicastStream.Write(unicastBytes, 0, unicastBytes.Length);
             unicastStream.Flush();
 
         }
@@ -29,9 +44,9 @@ namespace ChatServer.Controllers
                 TcpClient multicastSocket;
                 multicastSocket = (TcpClient)item;
                 NetworkStream multicastStream = multicastSocket.GetStream();
-                Byte[] broadcastBytes =  Encoding.ASCII.GetBytes(sender + msg); //Here we will pass the args and call Serializer
+                Byte[] multicastBytes =  Encoding.ASCII.GetBytes(sender + msg); //Here we will pass the args and call Serializer
 
-                multicastStream.Write(broadcastBytes, 0, broadcastBytes.Length);
+                multicastStream.Write(multicastBytes, 0, multicastBytes.Length);
                 multicastStream.Flush();
             }
 

@@ -21,16 +21,8 @@ namespace ChatServer.Controllers
             Username = username;
             ClientsList = cList;
 
-
-            Response connectResp = new Response("100", reqID, username);
-            string connected = Serializer.ResponseMaker(connectResp);
-
-            NetworkStream connectConfirmationStream = ClientSocket.GetStream();
-            Byte[] broadcastBytes = Encoding.ASCII.GetBytes(connected);
-
-            connectConfirmationStream.Write(broadcastBytes, 0, broadcastBytes.Length);
-            connectConfirmationStream.Flush();
-
+            Response connectResp = new Response("102", reqID, username);
+            Delivery.SendResponse(connectResp, clientSocket);
 
             Thread ctThread = new Thread(doChat);
             ctThread.Start();
@@ -46,7 +38,7 @@ namespace ChatServer.Controllers
             string rCount = null;
             requestCount = 0;
 
-            while ((true))
+            while (true)
             {
                 try
                 {
