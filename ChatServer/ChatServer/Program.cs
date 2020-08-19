@@ -28,14 +28,13 @@ namespace ChatServer
             while (!(Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Escape)) // Esc key stops the server
             {
                 clientSocket = server.AcceptTcpClient();
-                byte[] bytesFrom = new byte[10025];
+                byte[] bytesFrom = new byte[clientSocket.ReceiveBufferSize];
                 string dataFromClient = null;
 
                 NetworkStream stream = clientSocket.GetStream();
                 
-                stream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
-                dataFromClient = Encoding.ASCII.GetString(bytesFrom);
-                //dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
+                int dataLength = stream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
+                dataFromClient = Encoding.ASCII.GetString(bytesFrom, 0, dataLength);
                 
                 Request request = Deserializer.Reciever(dataFromClient);
                 if (request.Verb != "CONNECT") // Asssures that the first step of a client is to Connect
