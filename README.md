@@ -2,7 +2,7 @@
 
 ### To do's:
 - [ ] User management
-- [ ] Serializer
-- [ ] Deserializer
+- [x] Serializer
+- [x] Deserializer
 - [ ] Request handler
 - [ ] Response maker
