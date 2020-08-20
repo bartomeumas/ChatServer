@@ -8,10 +8,10 @@ namespace ChatServer.SerDes
 {
     static class Serializer
     {
-        // code\nreqID
         // code\nreqID\nListOfUsers
-        // DELIVER\nreqID\nSource|msg
         // code\nreqId\nUsername
+        // code\nreqID
+        // DELIVER\nreqID\nSource|msg
 
         public static string ResponseMaker(Response response) //Average Response
         {

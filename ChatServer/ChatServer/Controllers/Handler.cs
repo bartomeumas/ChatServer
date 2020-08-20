@@ -21,8 +21,7 @@ namespace ChatServer.Controllers
             Username = username;
             ClientsList = cList;
 
-            Response connectResp = new Response("102", reqID, username);
-            Delivery.SendResponse(connectResp, clientSocket);
+            Delivery.SendResponse(new Response("102", reqID, username), ClientSocket); // Confirm that it's logged in
 
             Thread ctThread = new Thread(doChat);
             ctThread.Start();
@@ -31,7 +30,7 @@ namespace ChatServer.Controllers
         private void doChat()
         {
             int requestCount = 0;
-            byte[] bytesFrom = new byte[10025];
+            byte[] bytesFrom = new byte[ClientSocket.ReceiveBufferSize];
             string dataFromClient = null;
             Byte[] sendBytes = null;
             string serverResponse = null;
@@ -44,10 +43,14 @@ namespace ChatServer.Controllers
                 {
                     requestCount = requestCount + 1;
                     NetworkStream networkStream = ClientSocket.GetStream();
-                    networkStream.Read(bytesFrom, 0, (int)ClientSocket.ReceiveBufferSize);
-                    dataFromClient = Encoding.ASCII.GetString(bytesFrom);
-                    Console.WriteLine("From client - " + Username + " : " + dataFromClient);
+                    int dataLength = networkStream.Read(bytesFrom, 0, (int)ClientSocket.ReceiveBufferSize);
+                    dataFromClient = Encoding.ASCII.GetString(bytesFrom, 0, dataLength);
                     rCount = Convert.ToString(requestCount);
+                    Request request = Deserializer.Reciever(dataFromClient);
+
+
+                    Console.WriteLine("From client - " + Username + " : " + dataFromClient);
+                    
 
                     //Program.broadcast(dataFromClient, clNo, true);
                 }
@@ -57,6 +60,8 @@ namespace ChatServer.Controllers
                 }
             }//end while
         }//end doChat
+
+        
     } 
 
 

@@ -18,11 +18,11 @@ namespace ChatServer.Controllers
         {
             TcpClient clientSocket;
             clientSocket = (TcpClient)destinatary;
-            NetworkStream unicastStream = clientSocket.GetStream();
+            NetworkStream responseStream = clientSocket.GetStream();
             Byte[] responsecastBytes = Encoding.ASCII.GetBytes(Serializer.ResponseMaker(response));
 
-            unicastStream.Write(responsecastBytes, 0, responsecastBytes.Length);
-            unicastStream.Flush();
+            responseStream.Write(responsecastBytes, 0, responsecastBytes.Length);
+            responseStream.Flush();
         }
 
         public static void UniCast(string msg, string sender, TcpClient destinatary)
@@ -37,7 +37,11 @@ namespace ChatServer.Controllers
 
         }
 
-        public static void MultiCast(string msg, string sender, List <TcpClient> destinataries)
+        public static void MultiCast(string msg, string sender, List <TcpClient> destinataries, Hashtable clientsList) // List will be a list of strings
+                                                                                                                       // and we will find the value of that
+                                                                                                                       // key in the hashtable
+
+        // Hashtable (key: string) (value: TcpClient)
         {
             foreach (var item in destinataries)
             {
@@ -52,11 +56,11 @@ namespace ChatServer.Controllers
 
         }
         
-        public static void BroadCast(string msg, string sender, bool flag, Hashtable clientsList) //Flag?
+        public static void BroadCast(string msg, string sender, Hashtable clientsList)
         {
             foreach (DictionaryEntry Item in clientsList)
             {
-                if ((string)Item.Key == sender)
+                if ((string)Item.Key == sender) // Not send the msg to itself
                 {
                     continue;
                 }
@@ -65,15 +69,7 @@ namespace ChatServer.Controllers
                 NetworkStream broadcastStream = broadcastSocket.GetStream();
                 Byte[] broadcastBytes = null;
 
-                broadcastBytes = Encoding.ASCII.GetBytes(msg);
-                //if (flag == true)
-                //{
-                //    broadcastBytes = Encoding.ASCII.GetBytes(sender + " says : " + msg);
-                //}
-                //else
-                //{
-                //    broadcastBytes = Encoding.ASCII.GetBytes(msg);
-                //}
+                broadcastBytes = Encoding.ASCII.GetBytes(msg); // Create a response of type DELIVER\nreqID\nSource|msg
 
                 broadcastStream.Write(broadcastBytes, 0, broadcastBytes.Length);
                 broadcastStream.Flush();
