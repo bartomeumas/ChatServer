@@ -19,7 +19,6 @@ namespace ChatServer.Controllers
                 case "List":
                     return new Response("100", request.ReqID, GetList(clientsList));
 
-
                 case "DISCONNECT":
                     Program.clientsList.Remove(sender);
                     return new Response("100", request.ReqID);

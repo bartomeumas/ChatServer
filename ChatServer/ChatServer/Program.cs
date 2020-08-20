@@ -54,7 +54,7 @@ namespace ChatServer
 
                 Console.WriteLine(request.UserName + " Joined chat room");
                 Handler client = new Handler();
-                client.startClient(clientSocket, dataFromClient, clientsList, request.ReqID);
+                client.startClient(clientSocket, request.UserName, clientsList, request.ReqID);
             }
 
             clientSocket.Close();

@@ -4,9 +4,6 @@ using System.Text;
 
 namespace ChatServer.Models
 {
-
-    //Hashtable responses = new Hashtable()
-    //    {
     //        {"100", "OK" },
     //        {"101", "Delivered" },
     //        {"102", "Authenticated" },
@@ -16,7 +13,6 @@ namespace ChatServer.Models
     //        {"202", "Partial Delivery"},
     //        {"203", "Unavailable" },
     //        {"204", "Invalid User" }
-    //    };
     class Response
     {
         public string Code;

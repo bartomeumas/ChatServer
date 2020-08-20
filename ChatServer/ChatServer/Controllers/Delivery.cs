@@ -84,6 +84,10 @@ namespace ChatServer.Controllers
         {
             foreach (DictionaryEntry Item in clientsList)
             {
+                if ((string)Item.Key == sender) // Not send the msg to itself
+                {
+                    continue;
+                }
                 TcpClient broadcastSocket;
                 broadcastSocket = (TcpClient)Item.Value;
                 NetworkStream broadcastStream = broadcastSocket.GetStream();
