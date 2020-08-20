@@ -47,12 +47,12 @@ namespace ChatServer.Controllers
                     dataFromClient = Encoding.ASCII.GetString(bytesFrom, 0, dataLength);
                     rCount = Convert.ToString(requestCount);
                     Request request = Deserializer.Reciever(dataFromClient);
+                    Response response = RequestHandler.Selector(request, Username, ClientsList);
 
-
-                    Console.WriteLine("From client - " + Username + " : " + dataFromClient);
+                    Delivery.SendResponse(response, ClientSocket);
                     
+                    Console.WriteLine($"{request.ReqID}: {Username} -> {request.Verb} -> {response.Code}");
 
-                    //Program.broadcast(dataFromClient, clNo, true);
                 }
                 catch (Exception ex)
                 {
