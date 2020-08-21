@@ -18,7 +18,7 @@ namespace ChatServer
         {
             Console.WriteLine("Starting Chat server...");
             int port = 8080;
-            TcpListener server = new TcpListener(IPAddress.Loopback, port); //The Loopback field is equivalent to 127.0.0.1 in dotted-quad notation.
+            TcpListener server = new TcpListener(IPAddress.Loopback, port); 
             TcpClient clientSocket = default(TcpClient);
 
             server.Start();

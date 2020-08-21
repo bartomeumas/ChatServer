@@ -36,8 +36,9 @@ namespace ChatServer.Controllers
             string serverResponse = null;
             string rCount = null;
             requestCount = 0;
+            bool ContinueLoop = true;
 
-            while (true)
+            while (ContinueLoop)
             {
                 try
                 {
@@ -49,11 +50,10 @@ namespace ChatServer.Controllers
                     Request request = Deserializer.Reciever(dataFromClient);
                     Response response = RequestHandler.Selector(request, Username, ClientsList);
 
-                    //if (response.Code == "1000")
-                    //{
-                    //    Program.clientsList.Remove(Username);
-                    //    response = new Response("100", request.ReqID);
-                    //}
+                    if (request.Verb == "DISCONNECT")
+                    {
+                        ContinueLoop = false;
+                    }
 
                     Delivery.SendResponse(response, ClientSocket);
                     
@@ -69,15 +69,4 @@ namespace ChatServer.Controllers
 
         
     } 
-
-
-
-    //class Handler
-    //{
-    //    public void handleRequest(string req)
-    //    {
-    //        //Assures that the user is CONNECTED
-
-    //    }
-    //}
 }
