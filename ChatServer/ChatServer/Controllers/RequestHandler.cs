@@ -17,7 +17,7 @@ namespace ChatServer.Controllers
                     return Delivery.Selector(request, sender, clientsList);
 
                 case "LIST":
-                    return new Response("100", request.ReqID, GetList(clientsList));
+                    return new Response("100", request.ReqID, GetList(clientsList, sender));
 
                 case "DISCONNECT":
                     Program.clientsList.Remove(sender);
@@ -26,12 +26,15 @@ namespace ChatServer.Controllers
             return new Response("200", request.ReqID);
         }
 
-        static private List<string> GetList(Hashtable clientsList)
+        static private List<string> GetList(Hashtable clientsList, string sender)
         {
             List<string> users = new List<string>();
             foreach (var client in clientsList.Keys)
             {
-                // Add condition to not send itself
+                if ((string)client == sender) // Not add itself to the list
+                {
+                    continue;
+                }
                 users.Add((string)client);
             }
 
