@@ -18,7 +18,7 @@ namespace ChatServer
         {
             Console.WriteLine("Starting Chat server...");
             int port = 8080;
-            TcpListener server = new TcpListener(IPAddress.Loopback, port); 
+            TcpListener server = new TcpListener(IPAddress.Parse("192.168.0.109"), port); 
             TcpClient clientSocket = default(TcpClient);
 
             server.Start();
@@ -47,6 +47,8 @@ namespace ChatServer
                     Delivery.SendResponse(new Response("204", request.ReqID), clientSocket);
                     continue;
                 }
+                if (int.TryParse(request.Verb, out _))
+                    continue;
 
                 clientsList.Add(request.UserName, clientSocket);
 

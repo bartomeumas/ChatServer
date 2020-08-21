@@ -77,7 +77,7 @@ namespace ChatServer.Controllers
             else if (notAvailable.Count == request.Users.Count)
                 return new Response("203", request.ReqID); // Delivered any user
             else
-                return new Response("204", request.ReqID, notAvailable); // Partial delivery
+                return new Response("202", request.ReqID, notAvailable); // Partial delivery
         }
 
         private static Response BroadCast(Request request, string sender, Hashtable clientsList)
