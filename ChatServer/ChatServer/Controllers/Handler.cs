@@ -49,6 +49,12 @@ namespace ChatServer.Controllers
                     Request request = Deserializer.Reciever(dataFromClient);
                     Response response = RequestHandler.Selector(request, Username, ClientsList);
 
+                    //if (response.Code == "1000")
+                    //{
+                    //    Program.clientsList.Remove(Username);
+                    //    response = new Response("100", request.ReqID);
+                    //}
+
                     Delivery.SendResponse(response, ClientSocket);
                     
                     Console.WriteLine($"{request.ReqID}: {Username} -> {request.Verb} -> {response.Code}");

@@ -34,12 +34,12 @@ namespace ChatServer.Controllers
 
         private static Response UniCast(Request request, string sender, Hashtable clientsList)
         {
-            if (clientsList.ContainsKey(request.UserName)) // Check if the user is online
+            if (clientsList.ContainsKey(request.Users[0])) // Check if the user is online
             {
                 TcpClient unicastSocket;
-                unicastSocket = (TcpClient)clientsList[request.UserName];
+                unicastSocket = (TcpClient)clientsList[request.Users[0]];
                 NetworkStream unicastStream = unicastSocket.GetStream();
-                Response response = new Response("DELIVER", sender, request.ReqID, request.Msg);
+                Response response = new Response("DELIVER", request.ReqID, sender, request.Msg);
                 Byte[] unicastBytes = Encoding.ASCII.GetBytes(Serializer.ResponseMaker(response)); //Here we will pass the args and call Serializer
 
                 unicastStream.Write(unicastBytes, 0, unicastBytes.Length);
@@ -56,12 +56,12 @@ namespace ChatServer.Controllers
 
             foreach (var destUser in request.Users)
             {
-                if (clientsList.ContainsKey(request.UserName)) // Check if the user is online
+                if (clientsList.ContainsKey(destUser)) // Check if the user is online
                 {
                     TcpClient multicastSocket;
                     multicastSocket = (TcpClient)clientsList[destUser];
                     NetworkStream multicastStream = multicastSocket.GetStream();
-                    Response response = new Response("DELIVER", sender, request.ReqID, request.Msg);
+                    Response response = new Response("DELIVER", request.ReqID, sender, request.Msg);
                     Byte[] multicastBytes = Encoding.ASCII.GetBytes(Serializer.ResponseMaker(response)); //Here we will pass the args and call Serializer
 
                     multicastStream.Write(multicastBytes, 0, multicastBytes.Length);
@@ -92,7 +92,7 @@ namespace ChatServer.Controllers
                 broadcastSocket = (TcpClient)Item.Value;
                 NetworkStream broadcastStream = broadcastSocket.GetStream();
                 Byte[] broadcastBytes = null;
-                Response response = new Response("DELIVER", sender, request.ReqID, request.Msg);
+                Response response = new Response("DELIVER", request.ReqID, sender, request.Msg);
 
                 broadcastBytes = Encoding.ASCII.GetBytes(Serializer.ResponseMaker(response)); // Create a response of type DELIVER\nreqID\nSource|msg
 

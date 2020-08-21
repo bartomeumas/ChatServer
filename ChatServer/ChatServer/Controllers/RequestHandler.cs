@@ -16,7 +16,7 @@ namespace ChatServer.Controllers
                 case "SEND":
                     return Delivery.Selector(request, sender, clientsList);
 
-                case "List":
+                case "LIST":
                     return new Response("100", request.ReqID, GetList(clientsList));
 
                 case "DISCONNECT":
@@ -31,6 +31,7 @@ namespace ChatServer.Controllers
             List<string> users = new List<string>();
             foreach (var client in clientsList.Keys)
             {
+                // Add condition to not send itself
                 users.Add((string)client);
             }
 
